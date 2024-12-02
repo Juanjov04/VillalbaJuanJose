@@ -45,7 +45,7 @@ namespace VillalbaJuanJose
             database.Insert(Recarga);
             DisplayAlert("Exito", "La recarga fue exitosa", "OK");
 
-            UltimaRecarga=$"Nombre: {Recarga.Nombre}\Numero:{Recarga.Numero}"\nFecha: { Recarga.Fecha};
+            UltimaRecarga=$"Nombre: {Recarga.Nombre}\nNumero:{Recarga.Numero}\nFecha: { Recarga.Fecha}";
             vjj_entrynombre.Text = string.Empty;
             vjj_entrytelefono.Text = string.Empty;
         }
