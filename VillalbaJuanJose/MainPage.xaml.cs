@@ -1,5 +1,6 @@
 ﻿using System.Data;
-using 
+using SQLite;
+
 
 namespace VillalbaJuanJose
 {
@@ -15,11 +16,15 @@ namespace VillalbaJuanJose
                 OnPropertyChanged(nameof(UltimaRecarga));
             }
         }
+        private SQLiteConnection database;
 
         public MainPage()
         {
             InitializeComponent();
             BindingContext = this;
+            string dbPath = Path.Combine(FileSystem.AppDataDirectory, "regargas.db");
+            database = new SQLiteConnection(dbPath);
+            database.CreateTablet<Recarga>();
             CargarUltimaRecarga();
         }
         private void OnRecargarClicked(object sender, EventArgs e)
@@ -30,6 +35,10 @@ namespace VillalbaJuanJose
             {
                 DisplayAlert("Error", "Por favor, ingresa todos los datos", "OK");
                 return;
+            }
+            var Recarga = new Recarga
+            {
+
             }
             string nombreArchivo = $"{nombre.Replace("", "")}.txt";
             string rutaArchivo = Path.Combine(FileSystem.AppDataDirectory, nombreArchivo);
