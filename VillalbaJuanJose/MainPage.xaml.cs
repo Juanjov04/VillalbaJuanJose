@@ -38,15 +38,14 @@ namespace VillalbaJuanJose
             }
             var Recarga = new Recarga
             {
-
-            }
-            string nombreArchivo = $"{nombre.Replace("", "")}.txt";
-            string rutaArchivo = Path.Combine(FileSystem.AppDataDirectory, nombreArchivo);
-            string contenido = $"Nombre: {nombre}\nNumero:{numero}\nFecha:{DateTime.Now}";
-            File.WriteAllText(rutaArchivo, contenido);
+                Nombre = nombre,
+                Numero = numero,
+                Fecha = DateTime.Now
+            };
+            database.Insert(Recarga);
             DisplayAlert("Exito", "La recarga fue exitosa", "OK");
 
-            UltimaRecarga=contenido;
+            UltimaRecarga=$"Nombre: {Recarga.Nombre}\Numero:{Recarga.Numero}"\nFecha: { Recarga.Fecha};
             vjj_entrynombre.Text = string.Empty;
             vjj_entrytelefono.Text = string.Empty;
         }
